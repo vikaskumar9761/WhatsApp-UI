@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/Widgets/ui_helper.dart';
+import 'package:whatsapp/Screens/OTP/otp_screen.dart';
 
 class Loginscreen extends StatefulWidget {
   @override
@@ -7,7 +8,6 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
-  
   TextEditingController phoneControler = TextEditingController();
   List<String> countries = [
     "India",
@@ -133,7 +133,8 @@ class _LoginscreenState extends State<Loginscreen> {
               SizedBox(
                 width: 200,
                 child: TextField(
-                  keyboardType: TextInputType.number,style: TextStyle(fontSize: 20),
+                  keyboardType: TextInputType.number,
+                  style: TextStyle(fontSize: 20),
                   controller: phoneControler,
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
@@ -149,10 +150,25 @@ class _LoginscreenState extends State<Loginscreen> {
           ),
         ],
       ),
-      floatingActionButton: UiHelper.CustomButton(callback: (){
-
-      }, buttonname: "next"),
+      floatingActionButton: UiHelper.CustomButton(
+        callback: () {
+          login(phoneControler.text.toString());
+        },
+        buttonname: "next",
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  login(String phonenumber) {
+    if (phonenumber.isEmpty) {
+      return ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Enter the phpne number"),
+      backgroundColor: Color(0xff00a884),));
+    }
+    else{
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>OtpScreen(phoneNumber:phonenumber)));
+    }
   }
 }
