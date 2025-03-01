@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/Screens/OTP/otp_screen.dart';
 import 'package:whatsapp/Widgets/ui_helper.dart';
 
 class OtpScreen extends StatelessWidget {
