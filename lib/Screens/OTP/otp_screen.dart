@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/Widgets/ui_helper.dart';
+import 'package:whatsapp/Screens/Profile/profile_screen.dart';
 
 class OtpScreen extends StatelessWidget {
   String phoneNumber;
@@ -56,6 +57,7 @@ class OtpScreen extends StatelessWidget {
             SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+
               children: [
                 UiHelper.CutormContainer(otp1controller),
                 SizedBox(width: 10,),
@@ -78,7 +80,7 @@ class OtpScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: UiHelper.CustomButton(callback: (){
-
+        Navigator.push(context,MaterialPageRoute(builder: (context)=>ProfileScreen()));
 
       }, buttonname: "Next"),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
