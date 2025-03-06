@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:whatsapp/Widgets/ui_helper.dart';
 import 'dart:io';
+import 'package:whatsapp/Screens/HomeScreen/home_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({super.key});
@@ -17,10 +18,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 50),
+            SizedBox(height: 80,),
             UiHelper.CustomText(
               text: "Profile info",
               height: 20,
@@ -84,7 +85,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       floatingActionButton: UiHelper.CustomButton(
-        callback: () {},
+        callback: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+        },
         buttonname: "next",
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
